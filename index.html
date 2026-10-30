@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>นายอร่อย กลมกล่อม | แนะนำตัว</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans Thai', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #e0e0e0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Animated background particles */
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particles span {
+      position: absolute;
+      width: 6px; height: 6px;
+      background: rgba(100, 200, 255, 0.3);
+      border-radius: 50%;
+      animation: float 15s infinite;
+    }
+    .particles span:nth-child(1)  { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+    .particles span:nth-child(2)  { left: 20%; animation-delay: 2s; animation-duration: 18s; }
+    .particles span:nth-child(3)  { left: 30%; animation-delay: 4s; animation-duration: 14s; }
+    .particles span:nth-child(4)  { left: 40%; animation-delay: 1s; animation-duration: 20s; }
+    .particles span:nth-child(5)  { left: 50%; animation-delay: 3s; animation-duration: 16s; }
+    .particles span:nth-child(6)  { left: 60%; animation-delay: 5s; animation-duration: 13s; }
+    .particles span:nth-child(7)  { left: 70%; animation-delay: 0.5s; animation-duration: 19s; }
+    .particles span:nth-child(8)  { left: 80%; animation-delay: 3.5s; animation-duration: 15s; }
+    .particles span:nth-child(9)  { left: 90%; animation-delay: 1.5s; animation-duration: 17s; }
+    .particles span:nth-child(10) { left: 5%;  animation-delay: 6s; animation-duration: 21s; }
+
+    @keyframes float {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .profile-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+
+    .profile-ring {
+      position: absolute;
+      top: -10px; left: -10px;
+      right: -10px; bottom: -10px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #64c8ff;
+      border-right-color: #a78bfa;
+      animation: spin 3s linear infinite;
+    }
+
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(100, 200, 255, 0.3);
+      box-shadow: 0 0 40px rgba(100, 200, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(100, 200, 255, 0.4);
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #64c8ff, #a78bfa, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      color: #a0a0c0;
+      font-weight: 300;
+    }
+
+    /* Cards */
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.4s; }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #64c8ff;
+    }
+
+    .card h2 .icon {
+      font-size: 1.8rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .info-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .info-item:hover {
+      background: rgba(100, 200, 255, 0.1);
+    }
+
+    .info-item .label {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-item .value {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* Favorite food section */
+    .favorite-food {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .food-emoji {
+      font-size: 5rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .food-text h3 {
+      font-size: 1.8rem;
+      color: #f59e0b;
+      margin-bottom: 8px;
+    }
+
+    .food-text p {
+      color: #b0b0c0;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    /* Quote */
+    .quote-box {
+      background: linear-gradient(135deg, rgba(100, 200, 255, 0.1), rgba(167, 139, 250, 0.1));
+      border-left: 4px solid #a78bfa;
+      border-radius: 0 12px 12px 0;
+      padding: 25px 30px;
+      margin-top: 10px;
+    }
+
+    .quote-box p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #c0c0e0;
+      line-height: 1.8;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #555;
+      font-size: 0.85rem;
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .footer a {
+      color: #64c8ff;
+      text-decoration: none;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8rem; }
+      .profile-img { width: 150px; height: 150px; }
+      .card { padding: 25px; }
+      .food-emoji { font-size: 3.5rem; }
+      .favorite-food { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="container">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="profile-wrapper">
+        <div class="profile-ring"></div>
+        <img src="profile.jpg" alt="รูปโปรไฟล์ของนายอร่อย กลมกล่อม" class="profile-img">
+      </div>
+      <h1>นายอร่อย กลมกล่อม</h1>
+      <p class="subtitle">🍜 คนรักอาหาร &bull; นักชิมสายแกงส้ม &bull; วัย 20 ปี</p>
+    </section>
+
+    <!-- About Me -->
+    <div class="card">
+      <h2><span class="icon">👤</span> เกี่ยวกับฉัน</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="label">ชื่อ</div>
+          <div class="value">อร่อย กลมกล่อม</div>
+        </div>
+        <div class="info-item">
+          <div class="label">อายุ</div>
+          <div class="value">20 ปี</div>
+        </div>
+        <div class="info-item">
+          <div class="label">ของที่ชอบ</div>
+          <div class="value">🍛 แกงส้ม</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Favorite Food -->
+    <div class="card">
+      <h2><span class="icon">🍽️</span> อาหารจานโปรด</h2>
+      <div class="favorite-food">
+        <div class="food-emoji">🍛</div>
+        <div class="food-text">
+          <h3>แกงส้ม</h3>
+          <p>
+            แกงส้มคืออาหารไทยรสเด็ดที่ผมหลงรัก!<br>
+            เปรี้ยว เผ็ด กลมกล่อม ทุกคำเต็มไปด้วยรสชาติ<br>
+            ไม่ว่าจะใส่ผักรวม ปลาช่อน หรือกุ้ง ก็อร่อยสุดๆ 🔥
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quote -->
+    <div class="card">
+      <h2><span class="icon">💬</span> คำคมประจำตัว</h2>
+      <div class="quote-box">
+        <p>"ชีวิตก็เหมือนแกงส้ม — ต้องมีทั้งเปรี้ยว เผ็ด และหวาน จึงจะกลมกล่อมอร่อยที่สุด" 🌶️</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>© 2026 นายอร่อย กลมกล่อม &bull; สร้างด้วย ❤️ และ แกงส้ม</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
+
